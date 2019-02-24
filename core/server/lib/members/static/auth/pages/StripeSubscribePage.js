@@ -86,13 +86,6 @@ export default class StripeSubscriptionPage extends Component {
     renderPlansSection() {
         return (
             <div className="gm-plans-container">
-                <div className="gm-publication-info">
-                    <div className="gm-logo"></div>
-                    <div className="gm-publication-name">
-                        <h2>Expensive Publication</h2>
-                        <span>Subscription</span>
-                    </div>
-                </div>
                 {this.renderPlans(this.plans)}
             </div>
         )
@@ -102,17 +95,19 @@ export default class StripeSubscriptionPage extends Component {
         const publicKey = stripeConfig.config.publicKey || '';
         return (
             <div className="flex">
+                sdafa
                 <div className="gm-modal-form gm-subscribe-form">
-                    <FormHeader title="Subscribe" error={error} errorText="Unable to confirm payment">
-                        <FormHeaderCTA title="Already a member?" label="Log in" hash="#signin" />
-                    </FormHeader>
-                    <StripeProvider apiKey={publicKey}>
-                        <Elements>
-                            <PaymentFormWrapped handleSubmit={handleSubmit} publicKey={publicKey} selectedPlan={this.state.selectedPlan} />
-                        </Elements>
-                    </StripeProvider>
+                    <FormHeader title="Subscribe" error={error} errorText="Unable to confirm payment" />
+                    <div className="flex">
+                        <StripeProvider apiKey={publicKey}>
+                            <Elements>
+                                <PaymentFormWrapped handleSubmit={handleSubmit} publicKey={publicKey} selectedPlan={this.state.selectedPlan} />
+                            </Elements>
+                            <FormHeaderCTA title="Already a member?" label="Log in" hash="#signin" />
+                        </StripeProvider>
+                        { this.renderPlansSection() }
+                    </div>
                 </div>
-                {this.renderPlansSection()}
             </div>
         )
     }

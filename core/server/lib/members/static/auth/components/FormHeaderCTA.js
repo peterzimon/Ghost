@@ -1,7 +1,7 @@
 import { IconRightArrow } from './icons';
 
 export default ({title, label, hash}) => (
-    <div className="flex items-baseline mt2">
+    <div className="gm-auth-cta">
         <h4>{ title }</h4>
         <a href={hash}>
             { label }

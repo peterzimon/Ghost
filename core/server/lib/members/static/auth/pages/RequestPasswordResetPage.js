@@ -8,7 +8,7 @@ export default ({ error, handleClose, handleSubmit }) => (
     <div className="gm-modal-form">
         <FormHeader title="Reset password" error={error} errorText="Unable to send email" />
         <Form bindTo="request-password-reset" onSubmit={handleSubmit}>
-            <EmailInput bindTo="email" />
+            <EmailInput bindTo="email" className="single" />
             <FormSubmit label="Send reset password instructions" />
         </Form>
     </div>

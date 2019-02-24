@@ -12,7 +12,7 @@
     height: 100vh;
     position: fixed;
     overflow-y: scroll;
-    background: rgba(10, 17, 23, 0.9);
+    background: linear-gradient(45deg, rgba(13,25,40,0.96) 0%,rgba(0,0,0,0.96) 100%);
     animation: fadeInOverlay 0.2s ease 1 forwards;
 }
 
@@ -21,19 +21,17 @@
 }
 
 .gm-page-overlay.close .gm-modal {
-    animation: closeModal 0.5s ease-in 1 forwards;
+    animation: closeModal 0.4s ease-in-out 1 forwards;
 }
 
 .gm-modal-container {
     position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 25vh;
     display: flex;
 }
 
 .gm-modal {
     position: relative;
-    background: white;
     margin: 0 auto;
     border-radius: 8px;
     box-shadow: var(--box-shadow-base);
@@ -41,8 +39,7 @@
 }
 
 .gm-modal-form {
-    width: 300px;
-    padding: 48px;
+    width: 350px;
 }
 
 .gm-modal-close {
@@ -72,35 +69,25 @@
     to {opacity: 0;}
 }
 
-@keyframes openModal { /* Safari and Chrome */
+@keyframes openModal {
     0% {
         opacity: 0;
-        transform: translateY(25px) scale(0.85);
-    }
-
-    40% {
-        opacity: 1.0;
-        transform: translateY(-8px) scale(1.04);
+        transform: scale(1.1);
     }
 
     100% {
-        transform: translateY(0) scale(1.0);
+        opacity: 1.0;
+        transform: scale(1.0);
     }
 }
 
-@keyframes closeModal { /* Safari and Chrome */
-    0% {
-        transform: translateY(0);
+@keyframes closeModal {
+    90% {
+        opacity: 0;
+        transform: scale(0.95);
     }
-
-    40% {
-        opacity: 1.0;
-        transform: translateY(-8px);
-    }
-
     100% {
         opacity: 0;
-        transform: translateY(85px);
     }
 }
 
@@ -163,8 +150,8 @@ button {
     text-align: center;
     cursor: pointer;
     white-space: nowrap;
-    padding: 13px 16px 14px;
-    border-radius: 4px;
+    padding: 15px 16px 16px;
+    border-radius: 5px;
     outline: none;
     transition: all var(--animation-speed-f1) ease-in-out;
     position: relative;
@@ -235,43 +222,53 @@ select:-webkit-autofill:active {
 }
 
 .gm-form-element {
-    margin: 24px 0 0;
     position: relative;
 }
 
 .gm-input {
     position: relative;
+    border-bottom: 1px solid var(--grey-l1);
+}
+
+.gm-input.last,
+.gm-input.single {
+    border-bottom: none;
+}
+
+.gm-input.first input {
+    border-radius: 6px 6px 0 0;
+}
+
+.gm-input.last input {
+    border-radius: 0 0 6px 6px;
+}
+
+.gm-input.single input {
+    border-radius: 6px;
 }
 
 .gm-input input {
-    font-size: var(--text-s);
+    font-size: var(--text-base);
     color: var(--grey-d3);
     border: none;
-    border-radius: 4px;
-    border: 1px solid var(--grey-l1);
     -webkit-appearance: none;
     box-sizing: border-box;
     background: var(--white);
     width: 100%;
     outline: none;
-    transition: border var(--animation-speed-f1) ease-in-out;
-    padding: 12px 14px 12px 38px; /* 1px bottom padding fixes jump that's caused by the border change */
+    padding: 14px 14px 14px 38px;
     letter-spacing: 0.2px;
     vertical-align: middle;
     line-height: 18px;
 }
 
-.gm-input input:hover {
-    border: 1px solid var(--grey);
-}
-
 .gm-input input.gm-error {
     border: 1px solid color-mod(var(--red) a(0.8));
-    background: color-mod(var(--red) a(0.02))
+    /* background: color-mod(var(--red) a(0.02)); */
 }
 
 .gm-input input:focus {
-    border: 1px solid color-mod(var(--blue) a(0.8));
+    /* border: 1px solid color-mod(var(--blue) a(0.8)); */
     box-shadow: 0 0 6px rgba(62, 176, 239, 0.3), 0 0 0px 40px #FFF inset;
 }
 

@@ -6,7 +6,7 @@ html {
 
 html, body {
     font-family: var(--default-font);
-    color: var(--black);
+    color: var(--white);
 }
 
 body {
@@ -22,7 +22,6 @@ p {
 h1 {
     margin: 0;
     padding: 0;
-    color: var(--grey-d3);
     font-size: var(--text-2xl);
     font-weight: 700;
 }
@@ -30,7 +29,6 @@ h1 {
 h4 {
     margin: 0;
     padding: 0;
-    color: var(--grey-d3);
     font-size: var(--text-base);
 }
 
@@ -72,21 +70,32 @@ a:hover {
 }
 
 .gm-auth-header h1 {
-    font-size: var(--text-2xl);
+    font-size: var(--text-3xl);
+    font-weight: 500;
+    color: var(--white);
 }
 
-.gm-auth-header h4,
-.gm-auth-footer h4 {
-    font-weight: normal;
-    font-size: var(--text-s);
-    letter-spacing: 0.4px;
+.gm-auth-footer {
+    margin: 24px 0 0;
 }
 
-.gm-auth-header a,
-.gm-auth-footer a {
+.gm-auth-cta {
+    margin: 20px 0 0;
     display: flex;
     align-items: center;
-    font-size: var(--text-s);
+    justify-content: center;
+}
+
+.gm-auth-cta h4 {
+    font-weight: normal;
+    font-size: var(--text-base);
+    letter-spacing: 0.4px;
+    color: var(--grey);
+}
+
+.gm-auth-cta a {
+    display: flex;
+    align-items: center;
     letter-spacing: 0.4px;
     padding: 8px;
     margin: -8px -8px -8px -2px;
@@ -95,30 +104,25 @@ a:hover {
     white-space: nowrap;
 }
 
-.gm-auth-header a:hover,
-.gm-auth-footer a:hover {
+.gm-auth-cta a:hover {
     color: var(--blue-d3);
 }
 
-.gm-auth-header a svg {
+.gm-auth-cta a svg {
     width: 12px;
     height: 12px;
     margin: 0 0 0 4px;
 }
 
-.gm-auth-header a svg g,
-.gm-auth-header a svg path {
+.gm-auth-cta a svg g,
+.gm-auth-cta a svg path {
     fill: var(--blue);
     transition: fill var(--animation-speed-f1) ease-in-out;
 }
 
-.gm-auth-header a:hover svg g,
-.gm-auth-header a:hover svg path {
+.gm-auth-cta a:hover svg g,
+.gm-auth-cta a:hover svg path {
     fill: var(--blue-d3);
-}
-
-.gm-auth-footer {
-    margin: 24px 0 0;
 }
 
 .gm-forgot-link {
@@ -126,7 +130,6 @@ a:hover {
     top: 14px;
     right: 14px;
     z-index: 9999;
-    font-size: var(--text-s);
     letter-spacing: 0.4px;
 }
 
@@ -155,10 +158,8 @@ a:hover {
 }
 
 .gm-plans-container {
-    background: var(--grey-l3);
-    border-left: 1px solid var(--grey-l2);
-    padding: 48px;
-    min-width: 240px;
+    padding: 0 48px;
+    min-width: 200px;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 }
@@ -167,7 +168,6 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin: 92px 0 0;
 }
 
 .gm-publication-name {
@@ -190,21 +190,16 @@ a:hover {
 }
 
 .gm-plans {
-    border: 1px solid var(--grey-l1);
-    border-radius: 8px;
-    margin: 26px 0 0;
+    margin: 28px 0 0;
 }
 
 .gm-plan {
     display: flex;
     align-items: center;
-    padding: 13px 16px;
-    border-bottom: 1px solid var(--grey-l1);
-    margin: 0;
-}
-
-.gm-plan:last-child {
-    border-bottom: none;
+    padding: 18px;
+    border: 1px solid var(--grey-d3);
+    margin: 0 0 20px 0;
+    border-radius: 8px;
 }
 
 .gm-plan input[type="radio"] {
@@ -242,11 +237,9 @@ a:hover {
  * how you can use CSS to style your Element's container.
  */
 .StripeElement {
-    font-size: var(--text-s);
     color: var(--grey-d3);
     border: none;
-    border-radius: 4px;
-    border: 1px solid var(--grey-l1);
+    border-radius: 0 0 6px 6px;
     -webkit-appearance: none;
     box-sizing: border-box;
     background: var(--white);
@@ -255,20 +248,14 @@ a:hover {
     transition: border var(--animation-speed-f1) ease-in-out;
     letter-spacing: 0.2px;
     line-height: 18px;
-    padding: 14px 12px 14px 10px;
-}
-
-.StripeElement:hover {
-    border: 1px solid var(--grey);
+    padding: 16px 12px 16px 10px;
 }
 
 .StripeElement--focus {
-    border: 1px solid color-mod(var(--blue) a(0.8));
     box-shadow: 0 0 6px rgba(62, 176, 239, 0.3), 0 0 0px 40px #FFF inset;
 }
 
 .StripeElement--invalid {
-    border: 1px solid color-mod(var(--red) a(0.8));
     background: color-mod(var(--red) a(0.02))
 }
 
