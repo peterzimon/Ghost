@@ -7,7 +7,7 @@ import EmailInput from '../components/EmailInput';
 import PasswordInput from '../components/PasswordInput';
 
 export default ({ error, handleSubmit }) => (
-    <div className="gm-modal-form">
+    <div className="gm-modal-form gm-signin-page">
         <FormHeader title="Log in" error={error} errorText="Wrong email or password" />
         <Form onSubmit={handleSubmit}>
             <EmailInput bindTo="email" className="first" />
