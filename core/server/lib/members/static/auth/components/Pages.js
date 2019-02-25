@@ -1,4 +1,5 @@
 import { Component } from 'preact';
+import { IconClose } from './icons';
 
 export default class Pages extends Component {
     constructor(props) {
@@ -37,7 +38,8 @@ export default class Pages extends Component {
             modalClassName += " gm-subscribe-modal"
         }
         return (
-            <div className={className} onClick={onClick}>
+            <div className={className}>
+                <div className="gm-modal-close" onClick={ onClick }>{IconClose}</div>
                 <div className="gm-modal-container">
                     <div className={modalClassName} onClick={(e) => e.stopPropagation()}>
                         {this.filterChildren(children, state)}
