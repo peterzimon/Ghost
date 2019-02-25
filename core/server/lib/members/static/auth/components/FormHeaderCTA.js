@@ -1,11 +1,9 @@
-import { IconRightArrow } from './icons';
-
-export default ({title, label, hash}) => (
+export default ({title, label, icon, hash}) => (
     <div className="gm-auth-cta">
-        <h4>{ title }</h4>
+        {title ? (<h4>{ title }</h4>) : ""}
         <a href={hash}>
             { label }
-            { IconRightArrow }
+            { icon }
         </a>
     </div>
 );

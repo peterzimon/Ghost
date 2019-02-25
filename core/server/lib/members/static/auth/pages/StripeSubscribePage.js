@@ -104,7 +104,12 @@ export default class StripePaymentPage extends Component {
         const publicKey = stripeConfig.config.publicKey || '';
         return (
             <div class="gm-subscribe-page">
-                <FormHeader title="Subscribe" error={ error } errorText="Unable to confirm payment" />
+                <FormHeader title="" error={ error } errorText="Unable to confirm payment">
+                    <div className="gm-subscribe-header">
+                        <h1>Subscribe</h1>
+                        
+                    </div>
+                </FormHeader>
                 <div className="flex items-stretch">
                     <div className="gm-modal-form gm-subscribe-form">
                         <StripeProvider apiKey={publicKey}>
@@ -112,7 +117,9 @@ export default class StripePaymentPage extends Component {
                                 <PaymentFormWrapped handleSubmit={handleSubmit} publicKey={publicKey} selectedPlan={this.state.selectedPlan} />
                             </Elements>
                         </StripeProvider>
-                        <FormHeaderCTA title="Already a member?" label="Log in" hash="#signin" />
+                        <div className="flex justify-center mt2">
+                            <FormHeaderCTA title="Already a member?" label="Log in" hash="#signin" />
+                        </div>
                     </div>
                     <div class="gm-plans-divider"></div>
                     {this.renderPlansSection()}

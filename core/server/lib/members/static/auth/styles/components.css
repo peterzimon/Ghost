@@ -260,7 +260,7 @@ select:-webkit-autofill:active {
     background: var(--white);
     width: 100%;
     outline: none;
-    padding: 14px 14px 14px 38px;
+    padding: 15px 14px 15px 38px;
     letter-spacing: 0.2px;
     vertical-align: middle;
     line-height: 18px;
@@ -302,7 +302,7 @@ select:-webkit-autofill:active {
 
 .gm-input i {
     position: absolute;
-    top: 15px;
+    top: 16px;
     left: 14px;
     opacity: 1.0;
     transition: all var(--animation-speed-base) ease-in-out;
