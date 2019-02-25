@@ -101,7 +101,7 @@
         padding: 0;
         top: 0;
         transform: none;
-        height: 100vh;
+        min-height: 100vh;
     }
 
     .gm-modal {
@@ -112,7 +112,7 @@
     }
 
     .gm-page-overlay {
-        background: rgba(10, 17, 23, 0.0);
+        background: linear-gradient(45deg, rgba(13,25,40,0.96) 0%,rgba(0,0,0,0.96) 100%);
     }
 
     @keyframes openModal {

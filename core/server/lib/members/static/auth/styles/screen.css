@@ -168,18 +168,22 @@ a:hover {
     padding-right: 60px;
 }
 
+.gm-modal-form {
+    width: 350px;
+}
+
 @media (max-width: 440px) {
+    .gm-modal-form {
+        width: 100%;
+        /* margin-top: 60px; */
+    }
+
     h4 {
         display: none;
     }
 }
 
-
 /* Pages */
-.gm-modal-form {
-    width: 350px;
-}
-
 @keyframes fadeInPage {
     from {opacity: 0;}
     to {opacity: 1;}
@@ -218,6 +222,11 @@ a:hover {
     width: 340px;
     justify-content: space-between;
     align-items: baseline;
+}
+
+.gm-subscribe-form-wrapper {
+    display: flex;
+    justify-content: stretch;
 }
 
 .gm-subscribe-form {
@@ -331,6 +340,44 @@ a:hover {
 
 .gm-plan .gm-currency {
     text-transform: uppercase;
+}
+
+@media (max-width: 440px) {
+    .gm-subscribe-form-wrapper {
+        flex-direction: column;
+        justify-content: start;
+    }
+
+    .gm-subscribe-form {
+        order: 2;
+        width: 100%;
+    }
+
+    .gm-plans-divider {
+        display: none;
+    }
+
+    .gm-plans-container {
+        order: 1;
+        width: 100%;
+        animation: none;
+    }
+
+    .gm-plans {
+        position: relative;
+        top: unset;
+        left: unset;
+        animation: none;
+        width: 100%;
+    }
+
+    .gm-plans .gm-publication-info {
+        display: none;
+    }
+
+    .gm-auth-header {
+        margin-top: 70px;
+    }
 }
 
 /**
