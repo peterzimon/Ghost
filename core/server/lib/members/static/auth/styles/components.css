@@ -265,14 +265,8 @@ select:-webkit-autofill:active {
     line-height: 18px;
 }
 
-.gm-input input.gm-error {
-    border: 1px solid color-mod(var(--red) a(0.8));
-    /* background: color-mod(var(--red) a(0.02)); */
-}
-
 .gm-input input:focus {
-    /* border: 1px solid color-mod(var(--blue) a(0.8)); */
-    box-shadow: 0 0 6px rgba(62, 176, 239, 0.3), 0 0 0px 40px #FFF inset;
+
 }
 
 .gm-input label {
@@ -291,41 +285,33 @@ select:-webkit-autofill:active {
     font-weight: 400;
 }
 
-.gm-input input:hover + label {
-    color: var(--grey-d1);
-}
-
-.gm-input input.gm-input-filled + label,
-.gm-input input:focus + label {
-    opacity: 0;
-    transition-delay: 0s;
-}
-
-.gm-input input.gm-error + label {
-    color: color-mod(var(--red) a(0.5));
-}
-
-.gm-input label i svg {
+.gm-input i svg {
     width: 16px;
     height: 16px;
 }
 
-.gm-input label i svg path,
 .gm-input i svg path {
     stroke: var(--grey);
     transition: stroke var(--animation-speed-base) ease-in-out;
 }
 
-.gm-input input:hover + label + i svg path {
-    stroke: var(--grey-d1);
+.gm-input input.gm-error {
+    background: #FEEBE6;
+    box-shadow: 0 0 1px rgba(255, 0, 0, 1); 
 }
 
-.gm-input input.gm-error + label + i svg path {
+.gm-input input.gm-error + i svg path {
     stroke: color-mod(var(--red) a(0.5));
 }
 
-.gm-input input.gm-input-filled + label + i svg path,
-.gm-input input:focus + label + i svg path {
+.gm-input input.gm-error::-webkit-input-placeholder,
+.gm-input input.gm-error::-moz-placeholder,
+.gm-input input.gm-error:-ms-input-placeholder,
+.gm-input input.gm-error:-moz-placeholder {
+    color: color-mod(var(--red) a(0.75));
+}
+
+.gm-input input.gm-input-filled + i svg path {
     stroke: var(--grey-d2);
 }
 
