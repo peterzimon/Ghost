@@ -22,8 +22,8 @@ p {
 h1 {
     margin: 0;
     padding: 0;
-    font-size: var(--text-2xl);
-    font-weight: 700;
+    font-size: var(--text-3xl);
+    font-weight: 500;
 }
 
 h4 {
@@ -61,6 +61,27 @@ a:hover {
     background: #343F44 url('../assets/images/ghost-logo.svg') center center no-repeat;
 }
 
+.gm-modal-header {
+    position: absolute;
+    top: 20px;
+    left: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.gm-modal-header .gm-logo {
+    width: 38px;
+    height: 38px;
+    margin: 0 12px 0 0;
+    border-radius: 4px;
+}
+
+.gm-modal-header h2 {
+    font-size: var(--text-l);
+    color: var(--grey-l1);
+    font-weight: 400;
+}
+
 .gm-auth-header,
 .gm-auth-footer {
     display: flex;
@@ -73,6 +94,7 @@ a:hover {
     font-size: var(--text-3xl);
     font-weight: 500;
     color: var(--white);
+    white-space: nowrap;
 }
 
 .gm-auth-footer {
@@ -205,12 +227,6 @@ a:hover {
     animation: showPlansContainer 0.6s ease 0.1s forwards;
 }
 
-.gm-plans-container .gm-publication-info {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
 .gm-plans-divider {
     background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 20%,rgba(255,255,255,1) 80%,rgba(255,255,255,0) 100%);
     width: 1px;
@@ -219,21 +235,36 @@ a:hover {
     animation: showPlansDivider 0.6s ease 0.1s forwards;
 }
 
-.gm-publication-name {
+.gm-signin-page .gm-publication-name h2 {
+    margin: 0;
+    font-size: var(--text-2xl);
+    font-weight: 400;
+    text-align: center;
+}
+
+.gm-plans-container .gm-publication-name {
     margin: 0 0 0 12px;
     flex-grow: 1;
 }
 
-.gm-publication-name h2 {
+.gm-plans-container .gm-publication-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 0 24px;
+}
+
+.gm-plans-container .gm-publication-name h2 {
     padding: 0;
     margin: 0;
     font-size: var(--text-l);
-    color: var(--grey-d3);
+    color: var(--white);
     word-wrap: none;
     white-space: nowrap;
+    font-weight: 400;
 }
 
-.gm-publication-name span {
+.gm-plans-container .gm-publication-name span {
     color: var(--grey-d1);
     font-size: var(--text-s);
 }
@@ -242,15 +273,15 @@ a:hover {
     width: 240px;
     margin: 28px 0 0;
     position: absolute;
-    top: 0;
+    top: -5px;
     left: -240px;
-    animation: showPlans 0.6s ease 0.25s forwards;
+    animation: showPlans 0.75s ease 0.25s forwards;
 }
 
 .gm-plan {
     display: flex;
     align-items: center;
-    padding: 18px;
+    padding: 12px 18px;
     border: 1px solid var(--grey-d3);
     margin: 0 0 20px 0;
     border-radius: 8px;
@@ -276,7 +307,7 @@ a:hover {
     font-size: var(--text-s);
     color: var(--grey-d1);
     padding: 0 0 0 9px;
-    margin: 0 0 0 6px;
+    margin: 8px 0 0 6px;
 }
 
 .gm-plan .gm-interval::before {
@@ -289,6 +320,10 @@ a:hover {
     height: 18px;
     background: var(--grey-d1);
     transform: rotate(25deg);
+}
+
+.gm-plan .gm-currency {
+    text-transform: uppercase;
 }
 
 /**

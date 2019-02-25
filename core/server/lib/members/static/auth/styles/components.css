@@ -46,6 +46,7 @@
     padding: 8px;
     z-index: 9999;
     padding: 20px;
+    cursor: pointer;
 }
 
 .gm-modal-close svg {
@@ -349,7 +350,7 @@ select:-webkit-autofill:active {
 .gm-form-errortext {
     color: var(--white);
     letter-spacing: 0.4px;
-    margin: 24px -2px -4px;
+    margin: 24px -2px 0px;
     background: color-mod(var(--red) a(1));
     padding: 11px 14px;
     font-weight: 500;

@@ -39,6 +39,10 @@ export default class Pages extends Component {
         }
         return (
             <div className={className}>
+                <div className="gm-modal-header">
+                    <div className="gm-logo"></div>
+                    <h2>Expensive Publication</h2>
+                </div>
                 <div className="gm-modal-close" onClick={ onClick }>{IconClose}</div>
                 <div className="gm-modal-container">
                     <div className={modalClassName} onClick={(e) => e.stopPropagation()}>

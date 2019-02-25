@@ -58,13 +58,13 @@ export default class StripePaymentPage extends Component {
         const selectedPlanId = this.state.selectedPlan ? this.state.selectedPlan.id : "";
         const dollarAmount = (amount / 100);
         return (
-            <div className={ (id === selectedPlanId ? "gm-plan selected" : "gm-plan") }>
-                <input type="radio" id={id} name="radio-group" value={id} defaultChecked={id === selectedPlanId} />
-                <label for={id}>
-                    <span class="gm-amount">{`$${dollarAmount}`}</span>
-                    <span class="gm-interval">{`${interval}`}</span>
-                </label>
-            </div>
+            <label for={ id }>
+                <div className={ (selectedPlanId === id ? "gm-plan selected" : "gm-plan") }>
+                    <input type="radio" id={id} name="radio-group" value={id} defaultChecked={id === selectedPlanId} />
+                    <span className="gm-amount">{`$${dollarAmount}`}</span>
+                    <span className="gm-interval"><span className="gm-currency">{ `${currency}` }</span> {`${interval}`}</span>
+                </div>
+            </label>
         )
     }
 
@@ -78,6 +78,13 @@ export default class StripePaymentPage extends Component {
     renderPlans(plans) {
         return (
             <div className="gm-plans" onChange={(e) => this.changePlan(e)}>
+                <div className="gm-publication-info">
+                    <div className="gm-logo"></div>
+                    <div className="gm-publication-name">
+                        <h2>Expensive Publication</h2>
+                        <span>Subscription</span>
+                    </div>
+                </div>
                 {
                     plans.map((plan) => this.renderPlan(plan))
                 }
