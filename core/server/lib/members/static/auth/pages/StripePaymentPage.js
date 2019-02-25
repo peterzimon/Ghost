@@ -58,7 +58,7 @@ export default class StripePaymentPage extends Component {
         const selectedPlanId = this.state.selectedPlan ? this.state.selectedPlan.id : "";
         const dollarAmount = (amount / 100);
         return (
-            <div class="gm-plan">
+            <div className={ (id === selectedPlanId ? "gm-plan selected" : "gm-plan") }>
                 <input type="radio" id={id} name="radio-group" value={id} defaultChecked={id === selectedPlanId} />
                 <label for={id}>
                     <span class="gm-amount">{`$${dollarAmount}`}</span>
@@ -98,7 +98,7 @@ export default class StripePaymentPage extends Component {
         return (
             <div>
                 <FormHeader title="Subscribe" error={ error } errorText="Unable to confirm payment" />
-                <div className="flex">
+                <div className="flex items-stretch">
                     <div className="gm-modal-form gm-subscribe-form">
                         <StripeProvider apiKey={publicKey}>
                             <Elements>
@@ -107,6 +107,7 @@ export default class StripePaymentPage extends Component {
                         </StripeProvider>
                         <FormHeaderCTA title="Already a member?" label="Log in" hash="#signin" />
                     </div>
+                    <div class="gm-plans-divider"></div>
                     {this.renderPlansSection()}
                 </div>
             </div>
