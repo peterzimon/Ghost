@@ -168,6 +168,21 @@ a:hover {
     to {opacity: 0;}
 }
 
+@keyframes showPlans {
+    from {left: -240px;}
+    to {left: 40px;}
+}
+
+@keyframes showPlansContainer {
+    from {width: 0px;}
+    to {width: 320px;}
+}
+
+@keyframes showPlansDivider {
+    from {margin-left: -1px; opacity: 0;}
+    to {margin-left: 40px; opacity: 0.3;}
+}
+
 
 /* Subscribe page */
 .gm-signin-page,
@@ -182,9 +197,12 @@ a:hover {
 
 .gm-plans-container {
     padding: 0;
-    min-width: 200px;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
+    width: 0px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-items: start;
+    animation: showPlansContainer 0.6s ease 0.1s forwards;
 }
 
 .gm-plans-container .gm-publication-info {
@@ -196,8 +214,9 @@ a:hover {
 .gm-plans-divider {
     background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 20%,rgba(255,255,255,1) 80%,rgba(255,255,255,0) 100%);
     width: 1px;
-    margin: 0 40px;
-    opacity: 0.3;
+    margin-left: -1px;
+    opacity: 0;
+    animation: showPlansDivider 0.6s ease 0.1s forwards;
 }
 
 .gm-publication-name {
@@ -220,7 +239,12 @@ a:hover {
 }
 
 .gm-plans {
+    width: 240px;
     margin: 28px 0 0;
+    position: absolute;
+    top: 0;
+    left: -240px;
+    animation: showPlans 0.6s ease 0.25s forwards;
 }
 
 .gm-plan {
