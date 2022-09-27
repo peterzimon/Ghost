@@ -34,7 +34,8 @@ const ALPHA_FEATURES = [
     'beforeAfterCard',
     'emailClicks',
     'sourceAttribution',
-    'lexicalEditor'
+    'lexicalEditor',
+    'exploreApp'
 ];
 
 module.exports.GA_KEYS = [...GA_FEATURES];
