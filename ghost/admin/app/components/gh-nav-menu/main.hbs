@@ -21,13 +21,6 @@
                     <li class="relative">
                         <LinkTo @route="dashboard" @alt="Dashboard" title="Dashboard" data-test-nav="dashboard">{{svg-jar "house"}} Dashboard</LinkTo>
                     </li>
-                    {{#if this.showExplore}}
-                        <li class="relative">
-                            <a href="javascript:void(0)" class={{if this.explore.exploreWindowOpen "active"}} {{on "click" (action "toggleExploreModal")}} data-test-nav="explore">
-                                {{svg-jar "globe"}} Explore
-                            </a>
-                        </li>
-                    {{/if}}
                     {{/if}}
                     <li class="relative">
                         <span {{action "transitionToOrRefreshSite" on="click"}}>
@@ -39,6 +32,13 @@
                             <span>{{svg-jar "external"}}</span>
                         </a>
                     </li>
+                    {{#if this.showExplore}}
+                        <li class="relative">
+                            <a href="javascript:void(0)" class={{if this.explore.exploreWindowOpen "active"}} {{on "click" (action "toggleExploreModal")}} data-test-nav="explore">
+                                {{svg-jar "globe-simple"}} Explore
+                            </a>
+                        </li>
+                    {{/if}}
                 </ul>
                 <ul class="gh-nav-list gh-nav-manage">
                     <li class="gh-nav-list-new relative">
