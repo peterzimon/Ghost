@@ -381,6 +381,7 @@ class ImportManager {
     }) {
         const siteUrl = new URL(urlUtils.urlFor('home', null, true));
         const postsUrl = new URL('posts', urlUtils.urlFor('admin', null, true));
+        const dashboardUrl = new URL(urlUtils.urlFor('admin', null, true));
         if (importTag && result?.data?.tags) {
             const tag = result.data.tags.find(t => t.name === importTag);
             postsUrl.searchParams.set('tag', tag.slug);
@@ -390,8 +391,20 @@ class ImportManager {
             result,
             siteUrl,
             postsUrl,
+            dashboardUrl,
             emailRecipient
         });
+    }
+
+    generateErrorCSV(resultErrors) {
+        var errors = 'Content type, Error, Context \n';
+        resultErrors.forEach(error => {
+            errors += error.help + `,` + error.message + `,` + JSON.stringify(error.context, (key, value) => {
+                return value.toString().replace( /,/g, " " );
+            });
+            errors += '\n';
+        });
+        return errors;
     }
 
     /**
@@ -449,13 +462,29 @@ class ImportManager {
                     emailRecipient: importOptions.user.email,
                     importTag: importOptions.importTag
                 });
-                await ghostMailer.send({
-                    to: importOptions.user.email,
-                    subject: importResult.data.problems.length
-                        ? 'Your content import was unsuccessful'
-                        : 'Your content import has finished',
-                    html: email
-                });
+
+                if (importResult.data.problems.length) {
+
+                    let errorsCSV = this.generateErrorCSV(importResult.data.problems);
+
+                    await ghostMailer.send.bind(ghostMailer)({
+                        to: importOptions.user.email,
+                        subject: 'Your content import was unsuccessful',
+                        html: email,
+                        attachments: [{
+                            filename: `Content import errors.csv`,
+                            content: errorsCSV,
+                            contentType: 'text/csv',
+                            contentDisposition: 'attachment'
+                        }]
+                    });
+                } else {
+                    await ghostMailer.send({
+                        to: importOptions.user.email,
+                        subject: 'Your content import has finished',
+                        html: email
+                    });
+                }
             }
         }
     }

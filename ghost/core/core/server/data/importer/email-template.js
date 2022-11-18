@@ -1,4 +1,4 @@
-module.exports = ({result, siteUrl, postsUrl, emailRecipient}) => `
+module.exports = ({result, siteUrl, postsUrl, dashboardUrl, emailRecipient}) => `
 <!doctype html>
 <html>
   <head>
@@ -127,7 +127,12 @@ module.exports = ({result, siteUrl, postsUrl, emailRecipient}) => `
                     </tr>
                     ${result.data.problems.length ? `
                     <tr>
-                      <td style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; font-size: 14px; vertical-align: top; padding-bottom: 16px;">One or more error occured while importing your content. Please contact support or report on the <a href="https://forum.ghost.org/">Ghost Community Forum</a>.</td>
+                      <td style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; font-size: 14px; vertical-align: top; padding-bottom: 16px;">One or more errors occured while importing your content. There's a CSV file attached to this email containing the error details.</td>
+                    </tr>
+                    <tr>
+                      <td style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; font-size: 14px; vertical-align: top; padding-bottom: 12px; padding-top: 16px;">
+                      <a href="${dashboardUrl.href}" target="_blank" style="display: inline-block; color: #ffffff; background-color: #15212A; border: solid 1px #15212A; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 16px; font-weight: normal; margin: 0; padding: 9px 22px 10px; border-color: #15212A;">Open dashboard</a>
+                      </td>
                     </tr>
                     ` : `
                     <tr>
