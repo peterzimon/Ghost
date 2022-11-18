@@ -397,7 +397,7 @@ class ImportManager {
     }
 
     generateErrorCSV(resultErrors) {
-        var errors = 'Content type, Error, Context \n';
+        var errors = 'Content type, Error, Details \n';
         resultErrors.forEach(error => {
             errors += error.help + `,` + error.message + `,` + JSON.stringify(error.context, (key, value) => {
                 return value.toString().replace( /,/g, " " );
