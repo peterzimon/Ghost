@@ -6,6 +6,7 @@ import {SortableContext, verticalListSortingStrategy} from '@dnd-kit/sortable';
 
 export interface SortableListProps {
     title?: string;
+    titleSeparator?: boolean;
     items: any[];
     listItems: React.ReactNode;
     handleDragEnd: (activeId: string, overId?: string) => void;
@@ -14,6 +15,7 @@ export interface SortableListProps {
 
 const SortableList: React.FC<SortableListProps> = ({
     title,
+    titleSeparator,
     items,
     listItems,
     handleDragEnd,
@@ -21,7 +23,7 @@ const SortableList: React.FC<SortableListProps> = ({
 }) => {
     return (
         <section>
-            <ListHeading title={title} titleSeparator />
+            <ListHeading title={title} titleSeparator={titleSeparator} />
             <div>
                 <DndContext
                     collisionDetection={closestCenter}

@@ -3,6 +3,8 @@ import Heading from '../../../../admin-x-ds/global/Heading';
 import Modal from '../../../../admin-x-ds/global/modal/Modal';
 import NiceModal from '@ebay/nice-modal-react';
 import React from 'react';
+import SortableList from '../../../../admin-x-ds/global/SortableList';
+import SortableListItem from '../../../../admin-x-ds/global/SortableListItem';
 import TextField from '../../../../admin-x-ds/global/form/TextField';
 import TierDetailPreview from './TierDetailPreview';
 import Toggle from '../../../../admin-x-ds/global/form/Toggle';
@@ -14,6 +16,23 @@ interface TierDetailModalProps {
 
 const TierDetailModal: React.FC<TierDetailModalProps> = () => {
     const {updateRoute} = useRouting();
+
+    const dummyBenefits = [
+        {id: '1', title: 'Free apple'},
+        {id: '2', title: 'Paid orange'},
+        {id: '3', title: 'And more...'}
+    ];
+
+    const dummyBenefitList = <>{
+        dummyBenefits.map(item => (
+            <SortableListItem id={item.id}>
+                <div className='py-3'>
+                    {item.title}
+                </div>
+            </SortableListItem>
+        ))
+    }</>;
+
     return <Modal
         afterClose={() => {
             updateRoute('tiers');
@@ -24,7 +43,7 @@ const TierDetailModal: React.FC<TierDetailModalProps> = () => {
         stickyFooter>
         <div className='mt-8 flex items-start gap-10'>
             <div className='flex grow flex-col gap-10'>
-                <Form title='Basic'>
+                <Form title='Basic' group>
                     <TextField
                         placeholder='Bronze'
                         title='Name'
@@ -62,7 +81,13 @@ const TierDetailModal: React.FC<TierDetailModalProps> = () => {
                 </Form>
 
                 <Form title='Benefits'>
-                    TBD
+                    <SortableList
+                        handleDragEnd={() => {}}
+                        handleDragStart={() => {}}
+                        items={dummyBenefits}
+                        listItems={dummyBenefitList}
+                        titleSeparator={false}
+                    />
                 </Form>
             </div>
             <div className='sticky top-[77px] shrink-0 basis-[380px]'>
