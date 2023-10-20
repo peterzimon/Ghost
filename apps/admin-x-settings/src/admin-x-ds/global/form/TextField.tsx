@@ -78,7 +78,7 @@ const TextField: React.FC<TextFieldProps> = ({
 
     const textFieldClasses = !unstyled && clsx(
         'peer order-2 h-8 w-full py-1 text-sm transition-all placeholder:transition-all dark:text-white dark:placeholder:text-grey-800 md:h-10 md:py-2 md:text-base',
-        isFocused || !title || hideTitle ? 'placeholder:text-grey-400' : 'placeholder:text-transparent',
+        isFocused || !title || hideTitle ? 'placeholder:text-grey-400' : 'placeholder:text-grey-600',
         border && 'border-b',
         !border && '-mb-1.5',
         clearBg ? 'bg-transparent' : 'bg-grey-75 px-[10px]',
@@ -97,7 +97,7 @@ const TextField: React.FC<TextFieldProps> = ({
         disabled={disabled}
         id={id}
         maxLength={maxLength}
-        placeholder={placeholder}
+        placeholder={(!isFocused && title ? title : placeholder)}
         type={type}
         value={value}
         onBlur={handleBlur}
@@ -136,8 +136,9 @@ const TextField: React.FC<TextFieldProps> = ({
     );
 
     const labelClasses = clsx(
+        Heading6Styles,
         'pointer-events-none absolute text-grey-600 transition-all',
-        isFocused || fieldValue ? `top-[-12px] ${Heading6Styles} ${isFocused && 'text-grey-900'}` : 'top-2'
+        isFocused || fieldValue ? `-top-3 ${isFocused && 'text-grey-900'}` : '-top-2 opacity-0'
     );
     const labelText = <label className={labelClasses}>{title}</label>;
 

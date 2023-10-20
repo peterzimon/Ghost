@@ -41,7 +41,7 @@ type HeadingLabelProps = {
 // export const Heading6Styles = 'text-2xs font-semibold uppercase tracking-wider';
 // export const Heading6StylesGrey = 'text-2xs font-semibold uppercase tracking-wider text-grey-800 dark:text-grey-500';
 
-export const Heading6Styles = 'text-xs';
+export const Heading6Styles = 'text-2xs uppercase font-semibold tracking-wider';
 export const Heading6StylesGrey = `${Heading6Styles} text-grey-800 dark:text-grey-500`;
 
 const Heading: React.FC<Heading1to5Props | Heading6Props | HeadingLabelProps> = ({
