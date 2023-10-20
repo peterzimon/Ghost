@@ -30,7 +30,8 @@ type Story = StoryObj<typeof TextField>;
 
 export const Default: Story = {
     args: {
-        placeholder: 'Enter something'
+        title: 'Name',
+        placeholder: 'Jamie Foxx'
     }
 };
 
@@ -45,7 +46,8 @@ export const Disabled: Story = {
 
 export const ClearBackground: Story = {
     args: {
-        placeholder: 'Enter something',
+        title: 'Name',
+        placeholder: 'Jamie Foxx',
         clearBg: true
     }
 };
@@ -62,16 +64,18 @@ export const WithValue: Story = {
     }
 };
 
-export const WithHeading: Story = {
-    args: {
-        title: 'Title',
-        placeholder: 'Enter something'
-    }
-};
-
 export const WithHint: Story = {
     args: {
         title: 'Title',
+        placeholder: 'Enter something',
+        hint: 'Here\'s some hint'
+    }
+};
+
+export const TitleHidden: Story = {
+    args: {
+        title: 'Title',
+        hideTitle: true,
         placeholder: 'Enter something',
         hint: 'Here\'s some hint'
     }

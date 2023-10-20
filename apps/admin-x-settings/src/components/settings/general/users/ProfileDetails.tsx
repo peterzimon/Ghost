@@ -28,6 +28,7 @@ export const DetailsInputs: React.FC<UserDetailProps> = ({errors, clearError, va
             <TextField
                 error={!!errors?.url}
                 hint={errors?.url || 'Have a website or blog other than this one? Link it!'}
+                placeholder='https://example.com'
                 title="Website"
                 value={user.website || ''}
                 onBlur={(e) => {

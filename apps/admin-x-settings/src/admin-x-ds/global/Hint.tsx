@@ -12,7 +12,7 @@ const Hint: React.FC<HintProps> = ({children, color, className, ...props}) => {
         return null;
     }
 
-    let colorClassName = 'text-grey-700 dark:text-grey-600';
+    let colorClassName = 'text-grey-600 dark:text-grey-600';
     switch (color) {
     case 'red':
         colorClassName = 'text-red dark:text-red-500';

@@ -1,7 +1,7 @@
-import Heading from '../Heading';
 import Hint from '../Hint';
-import React, {FocusEventHandler, useId} from 'react';
+import React, {ChangeEventHandler, FocusEventHandler, useId, useState} from 'react';
 import clsx from 'clsx';
+import {Heading6Styles} from '../Heading';
 import {useFocusContext} from '../../providers/DesignSystemProvider';
 
 export type TextFieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
@@ -53,22 +53,32 @@ const TextField: React.FC<TextFieldProps> = ({
 }) => {
     const id = useId();
     const {setFocusState} = useFocusContext();
+    const [isFocused, setIsFocused] = useState(false);
+    const [fieldValue, setFieldValue] = useState(value);
 
     const handleFocus: FocusEventHandler<HTMLInputElement> = (e) => {
         onFocus?.(e);
         setFocusState(true);
+        setIsFocused(true);
     };
 
     const handleBlur: FocusEventHandler<HTMLInputElement> = (e) => {
         onBlur?.(e);
         setFocusState(false);
+        setIsFocused(false);
+    };
+
+    const handleOnChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+        onChange?.(e);
+        setFieldValue(e.currentTarget.value);
     };
 
     const disabledBorderClasses = border && 'border-grey-300 dark:border-grey-900';
     const enabledBorderClasses = border && 'border-grey-500 hover:border-grey-700 focus:border-black dark:border-grey-800 dark:hover:border-grey-700 dark:focus:border-grey-500';
 
     const textFieldClasses = !unstyled && clsx(
-        'peer order-2 h-8 w-full py-1 text-sm placeholder:text-grey-500 dark:text-white dark:placeholder:text-grey-800 md:h-10 md:py-2 md:text-base',
+        'peer order-2 h-8 w-full py-1 text-sm transition-all placeholder:transition-all dark:text-white dark:placeholder:text-grey-800 md:h-10 md:py-2 md:text-base',
+        isFocused || !title || hideTitle ? 'placeholder:text-grey-400' : 'placeholder:text-transparent',
         border && 'border-b',
         !border && '-mb-1.5',
         clearBg ? 'bg-transparent' : 'bg-grey-75 px-[10px]',
@@ -91,14 +101,14 @@ const TextField: React.FC<TextFieldProps> = ({
         type={type}
         value={value}
         onBlur={handleBlur}
-        onChange={onChange}
+        onChange={handleOnChange}
         onFocus={handleFocus}
         {...props} />;
 
     if (rightPlaceholder) {
-        const rightPHEnabledBorderClasses = 'border-grey-500 dark:border-grey-800 peer-hover:border-grey-700 peer-focus:border-black dark:peer-focus:border-grey-500';
+        const rightPHEnabledBorderClasses = 'transtion-all border-grey-500 dark:border-grey-800 peer-hover:border-grey-700 peer-focus:border-black dark:peer-focus:border-grey-500';
         const rightPHClasses = !unstyled && clsx(
-            'order-3',
+            'order-3 transition-all',
             border && 'border-b',
             !border && '-mb-1.5',
             (typeof (rightPlaceholder) === 'string') ? 'h-8 py-1 text-right text-sm text-grey-500 md:h-10 md:py-2 md:text-base' : 'h-10',
@@ -121,15 +131,21 @@ const TextField: React.FC<TextFieldProps> = ({
     );
 
     containerClassName = clsx(
-        'flex flex-col',
+        'relative flex flex-col',
         containerClassName
     );
+
+    const labelClasses = clsx(
+        'pointer-events-none absolute text-grey-600 transition-all',
+        isFocused || fieldValue ? `top-[-12px] ${Heading6Styles} ${isFocused && 'text-grey-900'}` : 'top-2'
+    );
+    const labelText = <label className={labelClasses}>{title}</label>;
 
     if (title || hint) {
         return (
             <div className={containerClassName}>
                 {field}
-                {title && <Heading className={hideTitle ? 'sr-only' : 'order-1 !text-grey-700 peer-focus:!text-black dark:!text-grey-300 dark:peer-focus:!text-white'} htmlFor={id} useLabelTag={true}>{title}</Heading>}
+                {labelText && !hideTitle && labelText}
                 {hint && <Hint className={hintClassName} color={error ? 'red' : 'default'}>{hint}</Hint>}
             </div>
         );
