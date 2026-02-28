@@ -5,6 +5,7 @@ import {resolve} from 'path';
 export default (function viteConfig() {
     return adminXViteConfig({
         packageName: pkg.name,
+        useTailwindV4: true,
         entry: resolve(__dirname, 'src/index.tsx'),
         overrides: {
             test: {

@@ -43,6 +43,7 @@ const validateCardsDirectoryPlugin = (cardsPath) => {
 export default (function viteConfig() {
     const config = adminXViteConfig({
         packageName: pkg.name,
+        useTailwindV4: true,
         entry: resolve(__dirname, 'src/index.tsx'),
         overrides: {
             test: {

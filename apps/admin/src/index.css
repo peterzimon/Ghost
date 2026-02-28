@@ -1,4 +1,6 @@
 @import "@tryghost/shade/styles.css";
+@config "../tailwind.config.js";
+@source "../../shade/src/**/*.{js,ts,jsx,tsx}";
 
 /* Base layout - grid structure for alerts and main content */
 body.react-admin {

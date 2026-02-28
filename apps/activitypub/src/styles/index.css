@@ -1,4 +1,5 @@
 @import "@tryghost/shade/styles.css";
+@config "../../tailwind.config.cjs";
 
 .admin-x-base.shade-activitypub {
   animation-name: none;

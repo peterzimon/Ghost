@@ -6,6 +6,7 @@ import {resolve} from 'path';
 export default (function viteConfig() {
     return adminXViteConfig({
         packageName: pkg.name,
+        useTailwindV4: true,
         plugins: [
             svgr()
         ],

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../styles.css';
+import '../storybook-styles.css';
 import './storybook.css';
 
 import type { Preview } from "@storybook/react-vite";

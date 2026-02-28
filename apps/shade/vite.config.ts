@@ -1,4 +1,5 @@
 import path from 'path';
+import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import {glob} from 'glob';
 import {resolve} from 'path';
@@ -11,7 +12,8 @@ export default (function viteConfig() {
         logLevel: process.env.CI ? 'info' : 'warn',
         plugins: [
             svgr(),
-            react()
+            react(),
+            tailwindcss()
         ],
         resolve: {
             alias: {

@@ -1,3 +1,4 @@
+import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import {PluginOption, UserConfig, mergeConfig} from 'vite';
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
@@ -28,7 +29,17 @@ const externalPlugin = ({externals}: { externals: Record<string, string> }): Plu
 };
 
 // https://vitejs.dev/config/
-export default function adminXViteConfig({packageName, entry, overrides}: {packageName: string; entry: string; overrides?: UserConfig}) {
+export default function adminXViteConfig({
+    packageName,
+    entry,
+    overrides,
+    useTailwindV4 = false
+}: {
+    packageName: string;
+    entry: string;
+    overrides?: UserConfig;
+    useTailwindV4?: boolean;
+}) {
     const outputFileName = packageName[0] === '@' ? packageName.slice(packageName.indexOf('/') + 1) : packageName;
 
     const defaultConfig = defineConfig({
@@ -36,6 +47,7 @@ export default function adminXViteConfig({packageName, entry, overrides}: {packa
         plugins: [
             svgr(),
             react(),
+            ...(useTailwindV4 ? [tailwindcss()] : []),
             externalPlugin({
                 externals: {
                     react: 'React',

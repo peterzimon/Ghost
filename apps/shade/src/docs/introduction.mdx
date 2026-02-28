@@ -64,13 +64,10 @@ function MyComponent() {
 
 ### Configure TailwindCSS
 
-Add Shade's preset to your `tailwind.config.js`:
+Shade is Tailwind v4 CSS-first. Import the shared stylesheet in your app CSS entry:
 
-```js
-module.exports = {
-    presets: [require('@tryghost/shade/tailwind')],
-    // Your custom config...
-}
+```css
+@import "@tryghost/shade/styles.css";
 ```
 
 ### Scope Styles & Dark Mode

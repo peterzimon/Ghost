@@ -1,1 +1,2 @@
 @import "@tryghost/shade/styles.css";
+@config "../../tailwind.config.cjs";

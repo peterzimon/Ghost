@@ -45,7 +45,7 @@ const TableFooter = React.forwardRef<
     <tfoot
         ref={ref}
         className={cn(
-            'border-b bg-muted/50 font-medium [&>tr]:last:border-b-0',
+            'border-b bg-muted/50 font-medium last:[&>tr]:border-b-0',
             className
         )}
         {...props}
@@ -73,7 +73,7 @@ const headVariants = cva(
     {
         variants: {
             variant: {
-                default: 'h-10 px-2 text-left text-xs font-medium uppercase tracking-wide text-gray-700 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]',
+                default: '*:[[role=checkbox]]:translate-y-[2px] h-10 px-2 text-left text-xs font-medium uppercase tracking-wide text-gray-700 [&:has([role=checkbox])]:pr-0',
                 cardhead: 'text-base font-normal [&>div]:px-0'
             }
         },
@@ -120,7 +120,7 @@ const TableCell = React.forwardRef<
     <td
         ref={ref}
         className={cn(
-            'relative p-2.5 align-middle [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px] group-hover:bg-muted/50',
+            'relative p-2.5 align-middle [&:has([role=checkbox])]:pr-0 *:[[role=checkbox]]:translate-y-[2px] group-hover:bg-muted/50',
             className
         )}
         {...props}

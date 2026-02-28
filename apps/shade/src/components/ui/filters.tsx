@@ -216,18 +216,18 @@ const useFilterContext = () => useContext(FilterContext);
 // Reusable input variant component for consistent styling
 const filterInputVariants = cva(
     [
-        'relative flex shrink-0 items-center text-foreground outline-none transition',
-        'has-[[data-slot=filters-input]:focus-visible]:ring-ring/30',
-        'has-[[data-slot=filters-input]:focus-visible]:border-ring',
-        'has-[[data-slot=filters-input]:focus-visible]:outline-none',
-        'has-[[data-slot=filters-input]:focus-visible]:ring-[3px]',
-        'has-[[data-slot=filters-input]:focus-visible]:z-1',
-        'has-[[data-slot=filters-input]:[aria-invalid=true]]:border',
-        'has-[[data-slot=filters-input]:[aria-invalid=true]]:border-solid',
-        'has-[[data-slot=filters-input]:[aria-invalid=true]]:border-destructive/60',
-        'has-[[data-slot=filters-input]:[aria-invalid=true]]:ring-destructive/10',
-        'dark:has-[[data-slot=filters-input]:[aria-invalid=true]]:border-destructive',
-        'dark:has-[[data-slot=filters-input]:[aria-invalid=true]]:ring-destructive/20'
+        'outline-hidden relative flex shrink-0 items-center text-foreground transition',
+        '[&:has([data-slot=filters-input]:focus-visible)]:ring-ring/30',
+        '[&:has([data-slot=filters-input]:focus-visible)]:border-ring',
+        '[&:has([data-slot=filters-input]:focus-visible)]:outline-hidden',
+        '[&:has([data-slot=filters-input]:focus-visible)]:ring-[3px]',
+        '[&:has([data-slot=filters-input]:focus-visible)]:z-1',
+        '[&:has([data-slot=filters-input][aria-invalid=true])]:border',
+        '[&:has([data-slot=filters-input][aria-invalid=true])]:border-solid',
+        '[&:has([data-slot=filters-input][aria-invalid=true])]:border-destructive/60',
+        '[&:has([data-slot=filters-input][aria-invalid=true])]:ring-destructive/10',
+        'dark:[&:has([data-slot=filters-input][aria-invalid=true])]:border-destructive',
+        'dark:[&:has([data-slot=filters-input][aria-invalid=true])]:ring-destructive/20'
     ],
     {
         variants: {
@@ -236,9 +236,9 @@ const filterInputVariants = cva(
                 outline: 'border border-border bg-background'
             },
             size: {
-                lg: 'h-10 px-2.5 text-sm has-[[data-slot=filters-prefix]]:ps-0 has-[[data-slot=filters-suffix]]:pe-0',
-                md: 'h-[34px] px-2 text-sm has-[[data-slot=filters-prefix]]:ps-0 has-[[data-slot=filters-suffix]]:pe-0',
-                sm: 'h-8 px-2 text-xs has-[[data-slot=filters-prefix]]:ps-0 has-[[data-slot=filters-suffix]]:pe-0'
+                lg: 'has-data-[slot=filters-prefix]:ps-0 has-data-[slot=filters-suffix]:pe-0 h-10 px-2.5 text-sm',
+                md: 'has-data-[slot=filters-prefix]:ps-0 has-data-[slot=filters-suffix]:pe-0 h-[34px] px-2 text-sm',
+                sm: 'has-data-[slot=filters-prefix]:ps-0 has-data-[slot=filters-suffix]:pe-0 h-8 px-2 text-xs'
             },
             cursorPointer: {
                 true: 'cursor-pointer',
@@ -257,7 +257,7 @@ const filterInputVariants = cva(
 const filterRemoveButtonVariants = cva(
     [
         'inline-flex shrink-0 items-center justify-center text-muted-foreground transition hover:text-foreground',
-        'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring'
+        'focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring'
     ],
     {
         variants: {
@@ -292,7 +292,7 @@ const filterAddButtonVariants = cva(
     [
         'inline-flex shrink-0 items-center justify-center text-foreground transition',
         '[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:stroke-[1.5px]',
-        'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring'
+        'focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring'
     ],
     {
         variants: {
@@ -325,7 +325,7 @@ const filterAddButtonVariants = cva(
 const filterOperatorVariants = cva(
     [
         'focus-visible:z-1 relative flex shrink-0 items-center whitespace-nowrap text-muted-foreground transition hover:text-foreground data-[state=open]:text-foreground',
-        'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring'
+        'focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring'
     ],
     {
         variants: {
@@ -382,13 +382,13 @@ const filterFieldLabelVariants = cva(
 const filterFieldValueVariants = cva(
     [
         'focus-visible:z-1 relative flex min-w-0 shrink items-center gap-1 text-foreground transition',
-        'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring'
+        'focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring'
     ],
     {
         variants: {
             variant: {
                 solid: 'bg-secondary',
-                outline: 'border border-border bg-background hover:bg-secondary has-[[data-slot=switch]]:hover:bg-transparent'
+                outline: 'has-data-[slot=switch]:hover:bg-transparent border border-border bg-background hover:bg-secondary'
             },
             size: {
                 lg: 'h-10 gap-1.5 px-4 text-sm [&_svg:not([class*=size-])]:size-4',
@@ -396,7 +396,7 @@ const filterFieldValueVariants = cva(
                 sm: 'h-8 gap-0.5 px-2.5 text-xs [&_svg:not([class*=size-])]:size-3.5'
             },
             cursorPointer: {
-                true: 'cursor-pointer has-[[data-slot=switch]]:cursor-default',
+                true: 'has-data-[slot=switch]:cursor-default cursor-pointer',
                 false: ''
             }
         },
@@ -601,7 +601,7 @@ function FilterInput<T = unknown>({
                 <input
                     aria-describedby={!isValid && validationMessage ? `${field?.key || 'input'}-error` : undefined}
                     aria-invalid={!isValid}
-                    className="w-full outline-none"
+                    className="outline-hidden w-full"
                     data-slot="filters-input"
                     onBlur={handleBlur}
                     onChange={handleChange}
@@ -956,7 +956,7 @@ function FilterOperatorDropdown<T = unknown>({field, operator, values, onChange}
     // If hideOperatorSelect is true, just render the operator as plain text
     if (field.hideOperatorSelect) {
         return (
-            <div className="flex items-center self-stretch whitespace-nowrap border border-r-[0px] px-3 text-sm text-muted-foreground">
+            <div className="flex items-center self-stretch whitespace-nowrap border border-r-0 px-3 text-sm text-muted-foreground">
                 {operatorLabel}
             </div>
         );
@@ -1104,7 +1104,7 @@ function SelectOptionsPopover<T = unknown>({
                             onValueChange={handleSearchChange}
                         />
                     )}
-                    <CommandList className="outline-none">
+                    <CommandList className="outline-hidden">
                         {field.isLoading ? (
                             <div className="flex items-center justify-center py-6 text-sm text-muted-foreground">
                                 <Loader2 className="mr-2 size-4 animate-spin" />
@@ -1243,7 +1243,7 @@ function SelectOptionsPopover<T = unknown>({
             <PopoverContent
                 align="start"
                 className={cn(
-                    'p-0 data-[state=closed]:!animation-none data-[state=closed]:!duration-0',
+                    'p-0 data-[state=closed]:!animation-none data-[state=closed]:duration-0!',
                     field.className || 'w-[200px]'
                 )}
             >
@@ -1256,7 +1256,7 @@ function SelectOptionsPopover<T = unknown>({
                             onValueChange={handleSearchChange}
                         />
                     )}
-                    <CommandList className="outline-none">
+                    <CommandList className="outline-hidden">
                         {field.isLoading ? (
                             <div className="flex items-center justify-center py-6 text-sm text-muted-foreground">
                                 <Loader2 className="mr-2 size-4 animate-spin" />
@@ -1709,7 +1709,7 @@ function FilterValueSelector<T = unknown>({field, values, onChange, operator}: F
                     )}
                 </div>
             </PopoverTrigger>
-            <PopoverContent className={cn('w-36 p-0 data-[state=closed]:!animation-none data-[state=closed]:!duration-0', field.popoverContentClassName)}>
+            <PopoverContent className={cn('w-36 p-0 data-[state=closed]:!animation-none data-[state=closed]:duration-0!', field.popoverContentClassName)}>
                 <Command>
                     {field.searchable !== false && (
                         <CommandInput
@@ -1719,7 +1719,7 @@ function FilterValueSelector<T = unknown>({field, values, onChange, operator}: F
                             onValueChange={handleSearchChange}
                         />
                     )}
-                    <CommandList className="outline-none">
+                    <CommandList className="outline-hidden">
                         {field.isLoading ? (
                             <div className="flex items-center justify-center py-6 text-sm text-muted-foreground">
                                 <Loader2 className="mr-2 size-4 animate-spin" />
@@ -2270,7 +2270,7 @@ export function Filters<T = unknown>({
                         <PopoverContent
                             align={popoverAlign}
                             className={cn(
-                                'p-0 data-[state=closed]:!animation-none data-[state=closed]:!duration-0',
+                                'p-0 data-[state=closed]:!animation-none data-[state=closed]:duration-0!',
                                 selectedFieldForOptions?.className || popoverContentClassName || 'w-[220px]'
                             )}
                         >
@@ -2295,9 +2295,9 @@ export function Filters<T = unknown>({
                                 />
                             ) : (
                                 // Show field selection - needs Command wrapper for search/list
-                                <Command className='outline-none' tabIndex={showSearchInput ? undefined : 0}>
+                                <Command className='outline-hidden' tabIndex={showSearchInput ? undefined : 0}>
                                     {showSearchInput && <CommandInput className="h-[34px]" placeholder={mergedI18n.searchFields} />}
-                                    <CommandList className="outline-none">
+                                    <CommandList className="outline-hidden">
                                         <CommandEmpty>{mergedI18n.noFieldsFound}</CommandEmpty>
                                         {fields.map((item, index) => {
                                             // Handle grouped fields (FilterFieldGroup structure)

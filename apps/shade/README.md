@@ -16,15 +16,14 @@ export function Example() {
 }
 ```
 
-Tailwind preset:
+Tailwind v4 CSS-first setup:
 
-```js
-// tailwind.config.cjs
-module.exports = {
-    presets: [require('@tryghost/shade/tailwind')],
-    // your overrides...
-};
+```css
+/* app styles entry */
+@import "@tryghost/shade/styles.css";
 ```
+
+If you need legacy preset-based integration, `@tryghost/shade/tailwind.cjs` remains available for compatibility.
 
 Scoping and dark mode:
 

@@ -431,7 +431,7 @@ export const LongList: Story = {
 
 export const CustomStyling: Story = {
     render: () => (
-        <Command className="w-[500px] rounded-xl border-2 border-primary bg-gradient-to-b from-background to-secondary/20 shadow-xl">
+        <Command className="bg-linear-to-b w-[500px] rounded-xl border-2 border-primary from-background to-secondary/20 shadow-xl">
             <CommandInput
                 className="text-base"
                 placeholder="Type a command or search..."

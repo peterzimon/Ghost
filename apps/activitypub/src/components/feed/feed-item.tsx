@@ -558,7 +558,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
                                         }
                                     }}>
                                         <div className='flex w-full'>
-                                            <span className='min-w-0 truncate whitespace-nowrap font-semibold break-anywhere after:mx-1 after:font-normal after:text-gray-700 after:content-["·"] after:dark:text-gray-600' data-test-activity-heading>{author.name}</span>
+                                            <span className='min-w-0 truncate whitespace-nowrap font-semibold break-anywhere after:mx-1 after:font-normal after:text-gray-700 after:content-["·"] dark:after:text-gray-600' data-test-activity-heading>{author.name}</span>
                                             <div>{renderTimestamp(object, !object.authored)}</div>
                                         </div>
                                         <div className='flex w-full'>
